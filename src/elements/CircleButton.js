@@ -1,12 +1,23 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
+var c = [1, 2];
+
 class CircleButton extends React.Component {
     render() {
-        return (
+        const { style, color } = this.props; // const style = this.props.style; と同じ意味。書き方が違うだけ
 
-            <View style={styles.circleButton}>
-                <Text style={styles.circleButtonTitle}>
+        let bgColor = '#E31676';
+        let textColor = '#fff';
+
+        if (color === 'white') {
+            bgColor = '#fff';
+            textColor = '#E31676';
+        }
+
+        return (
+            <View style={[styles.circleButton, style, { backgroundColor: bgColor }]}>
+                <Text style={[styles.circleButtonTitle, { color: textColor }]}>
                     {this.props.children}
                 </Text>
             </View>
@@ -23,7 +34,6 @@ const styles = StyleSheet.create({
         right: 32,
         width: 48,
         height: 48,
-        backgroundColor: '#E31676',
         borderRadius: 24,
         justifyContent: 'center',
         alignItems: 'center',
